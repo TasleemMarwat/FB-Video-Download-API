@@ -223,3 +223,9 @@ class VideoDownloadService:
 
 # Global service instance
 video_service = VideoDownloadService()
+
+if not URLValidator.is_valid_facebook_url(url):
+    raise ValueError("Invalid Facebook URL provided")
+
+if not URLValidator.is_supported_url(url):
+    raise ValueError("Invalid Facebook or Instagram URL provided")
