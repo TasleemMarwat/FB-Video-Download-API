@@ -61,26 +61,4 @@ class URLValidator:
             
         return url
 
-    INSTAGRAM_URL_PATTERNS = [
-        r'https?://(?:www\.)?instagram\.com/(?:p|reel|reels|tv)/[A-Za-z0-9_-]+',
-        r'https?://(?:www\.)?instagram\.com/.+',
-    ]
-
-    @classmethod
-    def is_valid_instagram_url(cls, url: str) -> bool:
-        if not url:
-            return False
-        try:
-            parsed = urlparse(url)
-            if not parsed.scheme or not parsed.netloc:
-                return False
-        except Exception:
-            return False
-        for pattern in cls.INSTAGRAM_URL_PATTERNS:
-            if re.match(pattern, url, re.IGNORECASE):
-                return True
-        return False
-
-    @classmethod
-    def is_supported_url(cls, url: str) -> bool:
-        return cls.is_valid_facebook_url(url) or cls.is_valid_instagram_url(url)
+    
